@@ -6,16 +6,18 @@ using UnityEngine.SceneManagement;
 using Fusion.Sockets;
 using System;
 
-public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
+public class BasicSpawner : SimulationBehaviour, IPlayerJoined
 {
     public GameObject PlayerPrefab;
     private NetworkRunner _runner;
+    public List<PlayerRef> Players = new List<PlayerRef>();
+
     public async void StartGame(GameMode mode)
     {
         if (_runner != null)
             return;
 
-        _runner = gameObject.AddComponent<NetworkRunner>();
+        _runner = GetComponent<NetworkRunner>();
         var scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex);
         var sceneInfo = new NetworkSceneInfo();
         if (scene.IsValid)
@@ -40,9 +42,12 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
 
     public void PlayerJoined(PlayerRef player)
     {
+        
         if (player == Runner.LocalPlayer)
         {
-            Runner.Spawn(PlayerPrefab, new Vector3(0, 1, 0), Quaternion.identity);
+            Runner.Spawn(PlayerPrefab, new Vector3(0, 1, 0), Quaternion.identity, player);
+            Players.Add(player);
+
         }
     }
 }
