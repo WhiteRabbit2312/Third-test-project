@@ -2825,7 +2825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d26911a02146f45bd445e06032220d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 8094571478480188030, guid: 39c21f71bb487ee4791aa758501cc94b, type: 3}
+  PlayerPrefab: {fileID: 7773453690300595461, guid: 6d0fb9583aacc9c4b896dff2affc6e7b, type: 3}
   Players: []
 --- !u!114 &1762757418
 MonoBehaviour:
@@ -3218,7 +3218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.9}
+  m_AnchoredPosition: {x: 0, y: 1.29}
   m_SizeDelta: {x: 590, y: 331.99997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2010287137

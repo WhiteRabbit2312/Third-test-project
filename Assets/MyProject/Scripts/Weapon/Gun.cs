@@ -6,6 +6,9 @@ using Fusion;
 public class Gun : NetworkBehaviour
 {
     private Transform _playerToFollow;
+    [SerializeField]private float _offsetX;
+    [SerializeField]private float _offsetY;
+    [SerializeField]private float _offsetZ;
 
     public override void Spawned()
     {
@@ -14,12 +17,12 @@ public class Gun : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-
         Follow();
     }
 
     private void Follow()
     {
-        transform.position = _playerToFollow.position;
+        transform.position = new Vector3(_playerToFollow.position.x, 
+            _playerToFollow.position.y, _playerToFollow.position.z);
     }
 }
