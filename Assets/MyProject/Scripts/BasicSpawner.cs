@@ -10,7 +10,7 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
 {
     public GameObject PlayerPrefab;
     private NetworkRunner _runner;
-    public List<PlayerRef> Players = new List<PlayerRef>();
+    public List<PlayerRef> PlayerList = new List<PlayerRef>();
 
     public async void StartGame(GameMode mode)
     {
@@ -45,8 +45,9 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
         
         if (player == Runner.LocalPlayer)
         {
-            Runner.Spawn(PlayerPrefab, new Vector3(0, 0, 0), Quaternion.identity, player);
-            Players.Add(player);
+            Debug.Log("Spawned");
+            Runner.Spawn(PlayerPrefab, new Vector3(0, 0.54f, 0), Quaternion.identity, player);
+            PlayerList.Add(player);
 
         }
     }
