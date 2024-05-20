@@ -11,6 +11,6 @@ public class KillUI : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        _textKill.text = _playerStats.Kills.ToString();
+        _textKill.text = KillDatabase.Instance.GetKill(Object.InputAuthority).ToString();
     }
 }

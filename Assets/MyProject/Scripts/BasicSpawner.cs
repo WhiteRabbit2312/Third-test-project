@@ -8,7 +8,7 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
 {
     public GameObject PlayerPrefab;
     private NetworkRunner _runner;
-    public List<PlayerRef> PlayerList = new List<PlayerRef>();
+    public Dictionary<PlayerRef, PlayerStats> PlayerDictionary = new Dictionary<PlayerRef, PlayerStats>();
     private float _spawnPointY = 0.55f;
 
     public async void StartGame(GameMode mode)
@@ -46,8 +46,6 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
         {
             Debug.Log("Spawned");
             Runner.Spawn(PlayerPrefab, new Vector3(0, _spawnPointY, 0), Quaternion.identity, player);
-            PlayerList.Add(player);
-
         }
     }
 }

@@ -3,9 +3,15 @@ using Fusion;
 
 public class PlayerStats : NetworkBehaviour
 {
-    public int HP = 100;
-    public int Kills = 0;
-    
+    private BasicSpawner _basicSpawner;
+    public int HP { get; set; } = 100;
+    public int Kills { get; set; } = 0;
+
+    public override void Spawned()
+    {
+        _basicSpawner = Runner.GetComponent<BasicSpawner>();
+        _basicSpawner.PlayerDictionary.Add(Object.InputAuthority, this);
+    }
 
     public override void FixedUpdateNetwork()
     {
@@ -20,19 +26,4 @@ public class PlayerStats : NetworkBehaviour
         }
     }
 
-   
-
-    private void SetKills()
-    {
-        Kills++;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.TryGetComponent(out Bullet bullet))
-        {
-            Debug.LogError("HP: " + HP);
-            HP -= bullet.Damage;
-        }
-    }
 }

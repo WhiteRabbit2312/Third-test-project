@@ -47,7 +47,8 @@ public class Shooting : NetworkBehaviour
         if (HasInputAuthority)
         {
             Debug.LogError("Shoot");
-            NetworkObject nOBullet = Runner.Spawn(_bullet, _spawnBulletPos.transform.position, Quaternion.identity);
+            NetworkObject nOBullet = Runner.Spawn(_bullet, _spawnBulletPos.transform.position, Quaternion.identity.normalized, Runner.LocalPlayer);
+
             nOBullet.transform.rotation = transform.rotation;
         }
     }
