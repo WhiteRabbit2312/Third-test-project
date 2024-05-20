@@ -6,16 +6,11 @@ using UnityEngine.InputSystem;
 public class KillAndTimeMenu : NetworkBehaviour
 {
     [SerializeField] private NetworkObject _panel;
-    [SerializeField] private InputActionReference _actionReferenceLeftStick;
-
-    public override void Spawned()
-    {
-       
-    }
+    [SerializeField] private InputActionReference _actionReferenceOpenMenu;
 
     void Update()
     {
-        if (_actionReferenceLeftStick.action.IsPressed())//if (_playerInput.actions["UI Press"].IsPressed())
+        if (_actionReferenceOpenMenu.action.IsPressed())//if (_playerInput.actions["UI Press"].IsPressed())
         {
             Debug.LogError("Pressed");
             _panel.gameObject.SetActive(true);

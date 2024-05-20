@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 using UnityEngine.SceneManagement;
-using Fusion.Sockets;
-using System;
 
 public class BasicSpawner : SimulationBehaviour, IPlayerJoined
 {
     public GameObject PlayerPrefab;
     private NetworkRunner _runner;
     public List<PlayerRef> PlayerList = new List<PlayerRef>();
+    private float _spawnPointY = 0.55f;
 
     public async void StartGame(GameMode mode)
     {
@@ -46,7 +45,7 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
         if (player == Runner.LocalPlayer)
         {
             Debug.Log("Spawned");
-            Runner.Spawn(PlayerPrefab, new Vector3(0, 0.54f, 0), Quaternion.identity, player);
+            Runner.Spawn(PlayerPrefab, new Vector3(0, _spawnPointY, 0), Quaternion.identity, player);
             PlayerList.Add(player);
 
         }
