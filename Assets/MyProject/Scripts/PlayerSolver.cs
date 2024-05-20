@@ -17,6 +17,7 @@ public class PlayerSolver : NetworkBehaviour
     [SerializeField] private LocomotionSystem _locomotionSystem;
     [SerializeField] private XROrigin _xROrigin;
     [SerializeField] private Rigidbody _rb;
+    [SerializeField] private PlayerStats _playerStats;
     public override void Spawned()
     {
         if (!HasInputAuthority)
@@ -30,6 +31,7 @@ public class PlayerSolver : NetworkBehaviour
             Destroy(_basedControllerRight);
             Destroy(_trackedPoseDriver);
             Destroy(_camera);
+            Destroy(_playerStats);
         }
     }
 }

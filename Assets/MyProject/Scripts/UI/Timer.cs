@@ -7,8 +7,8 @@ public class Timer : NetworkBehaviour
 {
     [SerializeField] private TextMeshProUGUI _timerText;
     public event Action OnEndGame;
-    private int _breakTimer;
-    private int _timer;
+    [Networked] private int _breakTimer { get; set; }
+    [Networked] private int _timer { get; set; }
     
 
     public override void Spawned()

@@ -45,7 +45,8 @@ public class Shooting : NetworkBehaviour
         if (_grabInteractable.isSelected)
         {
             Debug.LogError("Shoot");
-            Runner.Spawn(_bullet, _spawnBulletPos.transform.position, Quaternion.identity);
+            NetworkObject nOBullet = Runner.Spawn(_bullet, _spawnBulletPos.transform.position, Quaternion.identity);
+            nOBullet.transform.rotation = transform.rotation;
         }
     }
 }
