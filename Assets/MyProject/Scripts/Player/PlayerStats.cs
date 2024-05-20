@@ -5,6 +5,19 @@ public class PlayerStats : NetworkBehaviour
 {
     public int HP = 100;
 
+    public override void FixedUpdateNetwork()
+    {
+        ZeroHP();
+    }
+
+    private void ZeroHP()
+    {
+        if(HP == 0)
+        {
+
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out Bullet bullet))

@@ -19,6 +19,7 @@ public class Shooting : NetworkBehaviour
 
 #if UNITY_EDITOR
         _myAction = _actionReferenceShootingUnityEditor;
+        _myAction.action.started += ShootInput;
 #else
         _myAction = _actionReferenceShooting;
 #endif
@@ -27,26 +28,25 @@ public class Shooting : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (_myAction.action.IsPressed())
+
+        if (_grabInteractable.isSelected)
         {
-            ShootInput();
+            //ShootInput();
         }
 
-        if (!_grabInteractable.isSelected)
+        else
         {
             transform.position = _gunPlace.transform.position;
         }
     }
 
 
-    public void ShootInput()
+    public void ShootInput(InputAction.CallbackContext context)
     {
         
-        if (_grabInteractable.isSelected)
-        {
-            Debug.LogError("Shoot");
-            NetworkObject nOBullet = Runner.Spawn(_bullet, _spawnBulletPos.transform.position, Quaternion.identity);
-            nOBullet.transform.rotation = transform.rotation;
-        }
+        Debug.LogError("Shoot");
+        NetworkObject nOBullet = Runner.Spawn(_bullet, _spawnBulletPos.transform.position, Quaternion.identity);
+        nOBullet.transform.rotation = transform.rotation;
+        
     }
 }
