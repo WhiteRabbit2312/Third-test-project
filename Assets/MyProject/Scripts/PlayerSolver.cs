@@ -18,6 +18,8 @@ public class PlayerSolver : NetworkBehaviour
     [SerializeField] private XROrigin _xROrigin;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private PlayerStats _playerStats;
+    [SerializeField] private NetworkObject _gun;
+    [SerializeField] private Death _death;
     public override void Spawned()
     {
         if (!HasInputAuthority)
@@ -32,6 +34,8 @@ public class PlayerSolver : NetworkBehaviour
             Destroy(_trackedPoseDriver);
             Destroy(_camera);
             Destroy(_playerStats);
+            Destroy(_gun);
+            Destroy(_death);
         }
     }
 }

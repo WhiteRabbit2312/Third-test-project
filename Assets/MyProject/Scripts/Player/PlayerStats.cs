@@ -4,6 +4,8 @@ using Fusion;
 public class PlayerStats : NetworkBehaviour
 {
     public int HP = 100;
+    public int Kills = 0;
+    
 
     public override void FixedUpdateNetwork()
     {
@@ -14,8 +16,15 @@ public class PlayerStats : NetworkBehaviour
     {
         if(HP == 0)
         {
-
+            HP = 100;
         }
+    }
+
+   
+
+    private void SetKills()
+    {
+        Kills++;
     }
 
     private void OnTriggerEnter(Collider other)

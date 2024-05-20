@@ -4,10 +4,10 @@ using Fusion;
 public class ResultsPanel : NetworkBehaviour
 {
     [SerializeField] private GameObject _resultPanel;
-    private Timer _time;
+    private TimerUI _time;
     public override void Spawned()
     {
-        _time = gameObject.AddComponent<Timer>();
+        _time = gameObject.AddComponent<TimerUI>();
         _time.OnEndGame += EnableResultsPanel;
     }
 

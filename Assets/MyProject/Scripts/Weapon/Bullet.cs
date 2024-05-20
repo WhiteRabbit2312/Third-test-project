@@ -10,7 +10,6 @@ public class Bullet : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-
         transform.Translate(Vector3.forward * _speed);
     }
 }

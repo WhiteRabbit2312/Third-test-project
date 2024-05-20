@@ -3,7 +3,7 @@ using Fusion;
 using TMPro;
 using System;
 
-public class Timer : NetworkBehaviour
+public class TimerUI : NetworkBehaviour
 {
     [SerializeField] private TextMeshProUGUI _timerText;
     public event Action OnEndGame;
@@ -38,8 +38,6 @@ public class Timer : NetworkBehaviour
             {
                 OnEndGame?.Invoke();
             }
-        }
-
-        
+        }  
     }
 }

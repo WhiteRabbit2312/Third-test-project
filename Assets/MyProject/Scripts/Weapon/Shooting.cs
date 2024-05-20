@@ -16,10 +16,11 @@ public class Shooting : NetworkBehaviour
     public override void Spawned()
     {
         _grabInteractable = GetComponent<XRGrabInteractable>();
-
-#if UNITY_EDITOR
         _myAction = _actionReferenceShootingUnityEditor;
         _myAction.action.started += ShootInput;
+
+#if UNITY_EDITOR
+
 #else
         _myAction = _actionReferenceShooting;
 #endif
@@ -29,24 +30,25 @@ public class Shooting : NetworkBehaviour
     public override void FixedUpdateNetwork()
     {
 
-        if (_grabInteractable.isSelected)
-        {
-            //ShootInput();
-        }
+        //if (_grabInteractable.isSelected)
+        //{
+        //ShootInput();
+        //}
 
-        else
-        {
-            transform.position = _gunPlace.transform.position;
-        }
+        //else
+        //{
+        transform.position = _gunPlace.transform.position;
+        //}
     }
 
 
     public void ShootInput(InputAction.CallbackContext context)
     {
-        
-        Debug.LogError("Shoot");
-        NetworkObject nOBullet = Runner.Spawn(_bullet, _spawnBulletPos.transform.position, Quaternion.identity);
-        nOBullet.transform.rotation = transform.rotation;
-        
+        if (HasInputAuthority)
+        {
+            Debug.LogError("Shoot");
+            NetworkObject nOBullet = Runner.Spawn(_bullet, _spawnBulletPos.transform.position, Quaternion.identity);
+            nOBullet.transform.rotation = transform.rotation;
+        }
     }
 }
