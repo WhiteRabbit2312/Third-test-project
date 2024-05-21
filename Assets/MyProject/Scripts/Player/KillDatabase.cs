@@ -8,6 +8,7 @@ public class KillDatabase : NetworkBehaviour
     public static KillDatabase Instance;
     private BasicSpawner _basicSpawner;
 
+
     public override void Spawned()
     {
         Instance = this;
@@ -17,7 +18,8 @@ public class KillDatabase : NetworkBehaviour
 
     public int GetKill(PlayerRef playerRef)
     {
-        return _basicSpawner.PlayerDictionary[playerRef].Kills;
+        Debug.LogError("Get kill: " + _basicSpawner.PlayerDictionary[playerRef].Kills);
+            return _basicSpawner.PlayerDictionary[playerRef].Kills;
     }
     public void DetectKill(PlayerRef playerRef)
     {

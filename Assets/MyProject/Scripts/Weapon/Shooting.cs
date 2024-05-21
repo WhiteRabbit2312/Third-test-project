@@ -35,9 +35,10 @@ public class Shooting : NetworkBehaviour
         //ShootInput();
         //}
 
-        //else
-        //{
-        transform.position = _gunPlace.transform.position;
+        if (!_grabInteractable.isSelected)
+        {
+            transform.position = _gunPlace.transform.position;
+        }
         //}
     }
 
@@ -48,7 +49,7 @@ public class Shooting : NetworkBehaviour
         {
             Debug.LogError("Shoot");
             NetworkObject nOBullet = Runner.Spawn(_bullet, _spawnBulletPos.transform.position, Quaternion.identity.normalized, Runner.LocalPlayer);
-
+            
             nOBullet.transform.rotation = transform.rotation;
         }
     }

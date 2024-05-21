@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 
@@ -17,10 +15,13 @@ public class Bullet : NetworkBehaviour
     {
         if (other.TryGetComponent(out PlayerStats playerStats))
         {
+            
             playerStats.HP -= _damage;
 
+           
             if (playerStats.HP <= 0)
             {
+                Debug.LogError("Bullet hit error");
                 KillDatabase.Instance.DetectKill(Object.InputAuthority);
             }
         }

@@ -5,24 +5,20 @@ using Fusion;
 
 public class Death : NetworkBehaviour
 {
-    private PlayerStats _playerStats;
+    [SerializeField] private PlayerStats _playerStats;
     private Vector3 _spawnPoint = new Vector3(0, 0.55f, 0);
-
-    public override void Spawned()
-    {
-        _playerStats = GetComponent<PlayerStats>();
-    }
 
     public override void FixedUpdateNetwork()
     {
         if(_playerStats.HP <= 0)
         {
-            ReturnToSpawnPoint();
+            //ReturnToSpawnPoint();
         }
     }
 
     private void ReturnToSpawnPoint()
     {
+        Debug.LogError("Return to spawn");
         transform.position = _spawnPoint;
     }
 }

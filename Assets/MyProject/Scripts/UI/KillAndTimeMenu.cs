@@ -19,7 +19,7 @@ public class KillAndTimeMenu : NetworkBehaviour
         else
         {
             Debug.LogError("UnPressed");
-            _panel.gameObject.SetActive(false);
+            //_panel.gameObject.SetActive(false);
         }
     }
 }

@@ -22,7 +22,7 @@ public class TimerUI : NetworkBehaviour
         if (_breakTimer > 0)
         {
             _timerText.text = $"Break time: { (_breakTimer / 50)}";
-            Debug.LogError("Time: " + (_breakTimer / 50));
+            //Debug.LogError("Time: " + (_breakTimer / 50));
             _breakTimer--;
         }
 

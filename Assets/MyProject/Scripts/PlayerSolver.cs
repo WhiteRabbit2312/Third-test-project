@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -20,6 +18,9 @@ public class PlayerSolver : NetworkBehaviour
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private NetworkObject _gun;
     [SerializeField] private Death _death;
+    [SerializeField] private KillAndTimeMenu _killAndTimeMenu;
+    [SerializeField] private KillUI _killUI;
+    [SerializeField] private TimerUI _timerUI;
     public override void Spawned()
     {
         if (!HasInputAuthority)
@@ -36,6 +37,9 @@ public class PlayerSolver : NetworkBehaviour
             Destroy(_playerStats);
             Destroy(_gun);
             Destroy(_death);
+            //Destroy(_killUI);
+            Destroy(_timerUI);
+            Destroy(_killAndTimeMenu);
         }
     }
 }
