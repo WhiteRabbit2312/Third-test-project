@@ -28,6 +28,7 @@ public class Ammunition : NetworkBehaviour
                 Debug.LogError("Ammo " + _playerStats.Ammo);
                 _playerStats.Ammo = _fullAmmo;
                 Runner.Despawn(Object);
+                _grabAmmo = false;
 
             }
 
@@ -52,5 +53,8 @@ public class Ammunition : NetworkBehaviour
         }
     }
 
-    
+    private void OnCollisionExit(Collision collision)
+    {
+        _grabAmmo = false;
+    }
 }

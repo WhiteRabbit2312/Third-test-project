@@ -15,8 +15,7 @@ public class PlayerStats : NetworkBehaviour
     {
         _basicSpawner = Runner.GetComponent<BasicSpawner>();
 
-        if(HasInputAuthority)
-            _basicSpawner.PlayerDictionary.Add(Object.InputAuthority, this);
+        _basicSpawner.PlayerDictionary.Add(Object.InputAuthority, this);
     }
 
     public override void FixedUpdateNetwork()
@@ -31,6 +30,7 @@ public class PlayerStats : NetworkBehaviour
         if(HP == 0)
         {
             ReturnToSpawnPoint();
+            HP = 100;
         }
     }
 

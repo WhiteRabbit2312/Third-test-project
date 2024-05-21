@@ -9,24 +9,26 @@ public class TimerUI : NetworkBehaviour
     public event Action OnEndGame;
     [Networked] private int _breakTimer { get; set; }
     [Networked] private int _timer { get; set; }
-    
+    private BasicSpawner _basicSpawner;
 
     public override void Spawned()
     {
         _breakTimer = 1500; // 30 seconds
         _timer = 15000; // 5 minutes
+        _basicSpawner = Runner.GetComponent<BasicSpawner>();
     }
 
     public override void FixedUpdateNetwork()
     {
+        /*
         if (_breakTimer > 0)
         {
             _timerText.text = $"Break time: { (_breakTimer / 50)}";
             //Debug.LogError("Time: " + (_breakTimer / 50));
             _breakTimer--;
-        }
+        }*/
 
-        else
+        if(_basicSpawner.PlayerDictionary.Count == 2)
         {
             if (_timer > 0)
             {
