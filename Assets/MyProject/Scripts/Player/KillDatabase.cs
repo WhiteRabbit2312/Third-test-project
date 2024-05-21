@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 
@@ -8,13 +6,21 @@ public class KillDatabase : NetworkBehaviour
     public static KillDatabase Instance;
     private BasicSpawner _basicSpawner;
 
-
     public override void Spawned()
     {
         Instance = this;
         _basicSpawner = Runner.GetComponent<BasicSpawner>();
     }
 
+    public override void FixedUpdateNetwork()
+    {
+        Debug.LogError("Player dictionary: " + _basicSpawner.PlayerDictionary.Count);
+
+        foreach (var item in _basicSpawner.PlayerDictionary)
+        {
+            Debug.LogError("Key: " + item.Key + "Value: " + item.Value.Kills);
+        }
+    }
 
     public int GetKill(PlayerRef playerRef)
     {

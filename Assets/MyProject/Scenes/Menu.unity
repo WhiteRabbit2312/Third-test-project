@@ -2780,7 +2780,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 5060757962883545959, guid: ce66da54ed0bcc44fa3e4d005a29e202, type: 3}
-  PlayerList: []
 --- !u!114 &1762757418
 MonoBehaviour:
   m_ObjectHideFlags: 0

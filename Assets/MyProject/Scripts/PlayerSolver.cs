@@ -17,7 +17,6 @@ public class PlayerSolver : NetworkBehaviour
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private NetworkObject _gun;
-    [SerializeField] private Death _death;
     [SerializeField] private KillAndTimeMenu _killAndTimeMenu;
     [SerializeField] private KillUI _killUI;
     [SerializeField] private TimerUI _timerUI;
@@ -36,8 +35,7 @@ public class PlayerSolver : NetworkBehaviour
             Destroy(_camera);
             Destroy(_playerStats);
             Destroy(_gun);
-            Destroy(_death);
-            //Destroy(_killUI);
+            Destroy(_killUI);
             Destroy(_timerUI);
             Destroy(_killAndTimeMenu);
         }

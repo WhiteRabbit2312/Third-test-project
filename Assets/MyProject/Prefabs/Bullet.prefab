@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5364572454433304291}
   - component: {fileID: 6791422878744144797}
   - component: {fileID: 7991532764777442986}
-  - component: {fileID: 3865142378395169580}
   - component: {fileID: 4864441670697508737}
+  - component: {fileID: 1029979687731641771}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -127,7 +127,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 7991532764777442986}
-  - {fileID: 3865142378395169580}
+  - {fileID: 1029979687731641771}
 --- !u!114 &7991532764777442986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,23 +141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
-  Damage: 10
---- !u!114 &3865142378395169580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7818704181859650188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 1
-  _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 1
 --- !u!54 &4864441670697508737
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -185,3 +168,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1029979687731641771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7818704181859650188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a591d221a634417e9827eb58e17de84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 1
+  _interpolationTarget: {fileID: 0}
+  UsePreciseRotation: 0
+  UseRenderSleepThresholds: 1
+  RenderThresholds:
+    UseEnergy: 1
+    Position: 0.01
+    Rotation: 0.01
+    Scale: 0.01

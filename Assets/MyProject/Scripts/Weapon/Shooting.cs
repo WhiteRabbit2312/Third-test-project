@@ -7,6 +7,8 @@ public class Shooting : NetworkBehaviour
 {
     [SerializeField] private InputActionReference _actionReferenceShootingUnityEditor;
     [SerializeField] private InputActionReference _actionReferenceShooting;
+    private PlayerStats _playerStats;
+
     private InputActionReference _myAction;
     [SerializeField] private NetworkObject _bullet;
     [SerializeField] private NetworkObject _spawnBulletPos;
@@ -15,6 +17,7 @@ public class Shooting : NetworkBehaviour
 
     public override void Spawned()
     {
+        _playerStats = GetComponentInParent<PlayerStats>();
         _grabInteractable = GetComponent<XRGrabInteractable>();
         _myAction = _actionReferenceShootingUnityEditor;
         _myAction.action.started += ShootInput;
@@ -29,17 +32,10 @@ public class Shooting : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-
-        //if (_grabInteractable.isSelected)
-        //{
-        //ShootInput();
-        //}
-
         if (!_grabInteractable.isSelected)
         {
             transform.position = _gunPlace.transform.position;
         }
-        //}
     }
 
 
@@ -47,9 +43,10 @@ public class Shooting : NetworkBehaviour
     {
         if (HasInputAuthority)
         {
+            _playerStats.Ammo--;
             Debug.LogError("Shoot");
             NetworkObject nOBullet = Runner.Spawn(_bullet, _spawnBulletPos.transform.position, Quaternion.identity.normalized, Runner.LocalPlayer);
-            
+            nOBullet.GetComponent<Bullet>().Init(_playerStats);
             nOBullet.transform.rotation = transform.rotation;
         }
     }
