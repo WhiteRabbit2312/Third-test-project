@@ -19,7 +19,7 @@ public class PlayerSolver : NetworkBehaviour
     [SerializeField] private NetworkObject _gun;
     [SerializeField] private KillAndTimeMenu _killAndTimeMenu;
     [SerializeField] private KillUI _killUI;
-    [SerializeField] private TimerUI _timerUI;
+    [SerializeField] private GameStages _gameStages;
     public override void Spawned()
     {
         if (!HasInputAuthority)
@@ -36,7 +36,7 @@ public class PlayerSolver : NetworkBehaviour
             Destroy(_playerStats);
             Destroy(_gun);
             Destroy(_killUI);
-            Destroy(_timerUI);
+            Destroy(_gameStages);
             Destroy(_killAndTimeMenu);
         }
     }

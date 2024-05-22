@@ -43,11 +43,13 @@ public class Shooting : NetworkBehaviour
     {
         if (HasInputAuthority)
         {
-            _playerStats.Ammo--;
-            Debug.LogError("Shoot");
-            NetworkObject nOBullet = Runner.Spawn(_bullet, _spawnBulletPos.transform.position, Quaternion.identity.normalized, Runner.LocalPlayer);
-            nOBullet.GetComponent<Bullet>().Init(_playerStats);
-            nOBullet.transform.rotation = transform.rotation;
+            if (_playerStats.Ammo > 0)
+            {
+                _playerStats.Ammo--;
+                Debug.LogError("Shoot");
+                NetworkObject nOBullet = Runner.Spawn(_bullet, _spawnBulletPos.transform.position, Quaternion.identity.normalized, Runner.LocalPlayer);
+                nOBullet.transform.rotation = transform.rotation;
+            }
         }
     }
 }

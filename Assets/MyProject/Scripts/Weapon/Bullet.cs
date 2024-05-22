@@ -4,14 +4,15 @@ using Fusion;
 public class Bullet : NetworkBehaviour
 {
     [SerializeField] private float _speed;
+    private KillCounter _killCounter;
+    private BasicSpawner _basicSpawner;
     private int _damage = 10;
-    private PlayerStats _playerStatsOfBullletPlayer;
 
-    public void Init(PlayerStats playerStats)
+    public override void Spawned()
     {
-        _playerStatsOfBullletPlayer = playerStats;
+        _basicSpawner = Runner.GetComponent<BasicSpawner>();
+        _killCounter = GameObject.FindObjectOfType<KillCounter>();
     }
-
     public override void FixedUpdateNetwork()
     {
         transform.Translate(Vector3.forward * _speed);
@@ -22,12 +23,19 @@ public class Bullet : NetworkBehaviour
         if (other.TryGetComponent(out PlayerStats playerStats))
         {
             playerStats.HP -= _damage;
-           
-            if (playerStats.HP <= 0)
+
+            Debug.LogError("Player HP: " + playerStats.HP);
+
+            if (playerStats.HP == 0)
             {
-                _playerStatsOfBullletPlayer.Kills++;
-                Debug.LogError("Bullet hit error");
-                KillDatabase.Instance.DetectKill(Object.InputAuthority);
+                Debug.LogError("Death");
+                int currentKills = _killCounter.KillDictionary[Object.InputAuthority];
+                currentKills++;
+                _killCounter.KillDictionary.Set(Object.InputAuthority, currentKills);
+                Debug.LogError("Kills in bullet script: " + _killCounter.KillDictionary[Object.InputAuthority]);
+
+                //_basicSpawner.PlayerDictionary[Object.InputAuthority].Kills++;
+                //Debug.LogError("Player Kills: " + _basicSpawner.PlayerDictionary[Object.InputAuthority].Kills);
             }
         }
     }

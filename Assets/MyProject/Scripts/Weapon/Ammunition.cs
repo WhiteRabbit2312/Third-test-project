@@ -10,7 +10,7 @@ public class Ammunition : NetworkBehaviour
     [SerializeField] private NetworkObject _ammunitionPlace;
     [SerializeField] private PlayerStats _playerStats;
     private XRGrabInteractable _grabInteractable;
-    private int _fullAmmo = 5;
+    private int _fullAmmo = 70;
     private bool _grabAmmo;
 
     public override void Spawned()
@@ -27,34 +27,29 @@ public class Ammunition : NetworkBehaviour
                 Debug.LogError("Set ammo");
                 Debug.LogError("Ammo " + _playerStats.Ammo);
                 _playerStats.Ammo = _fullAmmo;
-                Runner.Despawn(Object);
                 _grabAmmo = false;
 
             }
 
-            else
-            {
-                transform.position = _ammunitionPlace.transform.position;
-            }
-           
+            transform.position = _ammunitionPlace.transform.position;
         }
-
-        
     }
 
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision collision)
     {
         Debug.LogError("Collision ");
-        if(other.gameObject.TryGetComponent(out Shooting shooting))
+        if(collision.gameObject.TryGetComponent(out Shooting shooting))
         {
             _grabAmmo = true;
-            
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        _grabAmmo = false;
+        if (collision.gameObject.TryGetComponent(out Shooting shooting))
+        {
+            _grabAmmo = false;
+        }
     }
 }

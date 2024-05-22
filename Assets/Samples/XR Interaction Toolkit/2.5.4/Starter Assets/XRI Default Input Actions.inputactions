@@ -1001,7 +1001,7 @@
                 {
                     "name": "",
                     "id": "243ddf4f-3b2d-46ca-9b8b-159165b37f3b",
-                    "path": "<XRController>{RightHand}/gripPressed",
+                    "path": "<OculusTouchController>/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

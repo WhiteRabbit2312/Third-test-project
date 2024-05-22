@@ -3,42 +3,33 @@ using Fusion;
 using TMPro;
 using System;
 
-public class TimerUI : NetworkBehaviour
+public class GameStages : NetworkBehaviour
 {
+    [SerializeField] private GameObject _resultPanel;
     [SerializeField] private TextMeshProUGUI _timerText;
-    public event Action OnEndGame;
-    [Networked] private int _breakTimer { get; set; }
     [Networked] private int _timer { get; set; }
     private BasicSpawner _basicSpawner;
 
     public override void Spawned()
     {
-        _breakTimer = 1500; // 30 seconds
-        _timer = 15000; // 5 minutes
+        _timer = 15000;//15000; 5 minutes
         _basicSpawner = Runner.GetComponent<BasicSpawner>();
     }
 
     public override void FixedUpdateNetwork()
     {
-        /*
-        if (_breakTimer > 0)
-        {
-            _timerText.text = $"Break time: { (_breakTimer / 50)}";
-            //Debug.LogError("Time: " + (_breakTimer / 50));
-            _breakTimer--;
-        }*/
-
         if(_basicSpawner.PlayerDictionary.Count == 2)
         {
             if (_timer > 0)
             {
-                _timerText.text = $"Time left: { (_timer / 50) / 60 } : {(_timer / 50) % 60 }";
+                //_timerText.text = $"Time left: { (_timer / 50) / 60 } : {(_timer / 50) % 60 }";
+                _timerText.text = _timer.ToString();
                 _timer--;
             }
 
             else
             {
-                OnEndGame?.Invoke();
+                _resultPanel.SetActive(true);
             }
         }  
     }

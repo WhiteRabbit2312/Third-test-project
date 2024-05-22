@@ -8,6 +8,7 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
 {
     public GameObject PlayerPrefab;
     private NetworkRunner _runner;
+    //[Networked] public NetworkDictionary<PlayerRef, PlayerStats> PlayerDictionary => default;
     public Dictionary<PlayerRef, PlayerStats> PlayerDictionary = new Dictionary<PlayerRef, PlayerStats>();
     private float _spawnPointY = 0.55f;
 
@@ -35,7 +36,6 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
 
     public void ConnectButton()
     {
-        Debug.Log("Connected");
         StartGame(GameMode.Shared);
     }
 
@@ -44,7 +44,6 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
         
         if (player == Runner.LocalPlayer)
         {
-            Debug.Log("Spawned");
             Runner.Spawn(PlayerPrefab, new Vector3(0, _spawnPointY, 0), Quaternion.identity, player);
         }
     }
