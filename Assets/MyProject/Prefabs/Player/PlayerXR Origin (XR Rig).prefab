@@ -2276,6 +2276,7 @@ MonoBehaviour:
   - {fileID: 4499642688921148206}
   - {fileID: 7174351236342170994}
   - {fileID: 4286175117762751277}
+  - {fileID: 530267274561375388}
   - {fileID: 7652330326867228448}
   - {fileID: 6396190010108549856}
   - {fileID: 6685340723314729237}
@@ -2424,7 +2425,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textKill: {fileID: 3833539684412432037}
   _HP: 100
-  _Kills: 0
   _Ammo: 5
 --- !u!1 &5230982559035871526
 GameObject:
@@ -3114,7 +3114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textKill: {fileID: 3833539684412432037}
-  _playerStats: {fileID: 4286175117762751277}
 --- !u!114 &6685340723314729237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4270,6 +4269,7 @@ GameObject:
   - component: {fileID: 2975907068114999867}
   - component: {fileID: 8826480665141983842}
   - component: {fileID: 4285208284877228845}
+  - component: {fileID: 530267274561375388}
   m_Layer: 5
   m_Name: ResultsCanvas
   m_TagString: Untagged
@@ -4343,7 +4343,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4285208284877228845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4361,6 +4361,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &530267274561375388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6630645820055435211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a038e441108b5c48900a5e009abbaf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textResult: {fileID: 8489245265560553107}
 --- !u!1 &7214984230952669018
 GameObject:
   m_ObjectHideFlags: 0

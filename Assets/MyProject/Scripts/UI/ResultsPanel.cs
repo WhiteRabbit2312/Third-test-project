@@ -1,17 +1,20 @@
 using UnityEngine;
 using Fusion;
+using TMPro;
+using System.Linq;
 
 public class ResultsPanel : NetworkBehaviour
 {
-    [SerializeField] private GameObject _resultPanel;
-    private GameStages _time;
-    public override void Spawned()
+    [SerializeField] private TextMeshProUGUI _textResult;
+    private KillCounter _killCounter;
+
+    public void Awake()
     {
-        _time = gameObject.AddComponent<GameStages>();
+        _killCounter = GameObject.FindObjectOfType<KillCounter>();
+        _textResult.text = "Winner: " + _killCounter.KillDictionary.Max().Key + " Kills: " + _killCounter.KillDictionary.Max().Value.ToString();
+
+        Debug.LogError("Result kill " + _killCounter.KillDictionary.Max().Key + " Kills: " + _killCounter.KillDictionary.Max().Value.ToString());
     }
 
-    private void EnableResultsPanel()
-    {
-        _resultPanel.SetActive(true);
-    }
+    
 }

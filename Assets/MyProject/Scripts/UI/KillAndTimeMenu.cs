@@ -12,13 +12,13 @@ public class KillAndTimeMenu : NetworkBehaviour
     {
         if (_actionReferenceOpenMenu.action.IsPressed())//if (_playerInput.actions["UI Press"].IsPressed())
         {
-            Debug.LogError("Pressed");
+            //Debug.LogError("Pressed");
             _panel.gameObject.SetActive(true);
         }
         
         else
         {
-            Debug.LogError("UnPressed");
+            //Debug.LogError("UnPressed");
             _panel.gameObject.SetActive(false);
         }
     }

@@ -34,8 +34,11 @@ public class Bullet : NetworkBehaviour
                 _killCounter.KillDictionary.Set(Object.InputAuthority, currentKills);
                 Debug.LogError("Kills in bullet script: " + _killCounter.KillDictionary[Object.InputAuthority]);
 
-                //_basicSpawner.PlayerDictionary[Object.InputAuthority].Kills++;
-                //Debug.LogError("Player Kills: " + _basicSpawner.PlayerDictionary[Object.InputAuthority].Kills);
+                foreach(var item in _killCounter.KillDictionary)
+                {
+                    Debug.LogError("Player: " + item.Key + "Bullet all kills: " + item.Value);
+                }
+
             }
         }
     }

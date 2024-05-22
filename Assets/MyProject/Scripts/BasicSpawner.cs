@@ -10,6 +10,7 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
     private NetworkRunner _runner;
     //[Networked] public NetworkDictionary<PlayerRef, PlayerStats> PlayerDictionary => default;
     public Dictionary<PlayerRef, PlayerStats> PlayerDictionary = new Dictionary<PlayerRef, PlayerStats>();
+    private KillCounter _killCounter;
     private float _spawnPointY = 0.55f;
 
     public async void StartGame(GameMode mode)
@@ -41,7 +42,16 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
 
     public void PlayerJoined(PlayerRef player)
     {
-        
+        _killCounter = GameObject.FindObjectOfType<KillCounter>();
+        _killCounter.KillDictionary.Set(player, 0);
+
+        Debug.LogError("Player name " + player);
+
+        foreach(var item in _killCounter.KillDictionary)
+        {
+            Debug.LogError("Player: " + item.Key);
+        }
+
         if (player == Runner.LocalPlayer)
         {
             Runner.Spawn(PlayerPrefab, new Vector3(0, _spawnPointY, 0), Quaternion.identity, player);

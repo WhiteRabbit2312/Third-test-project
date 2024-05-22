@@ -38,7 +38,7 @@ public class Ammunition : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.LogError("Collision ");
+        //Debug.LogError("Collision ");
         if(collision.gameObject.TryGetComponent(out Shooting shooting))
         {
             _grabAmmo = true;
