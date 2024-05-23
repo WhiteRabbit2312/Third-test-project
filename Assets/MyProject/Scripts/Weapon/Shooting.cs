@@ -19,7 +19,7 @@ public class Shooting : NetworkBehaviour
     {
         _playerStats = GetComponentInParent<PlayerStats>();
         _grabInteractable = GetComponent<XRGrabInteractable>();
-        _myAction = _actionReferenceShootingUnityEditor;
+        _myAction = _actionReferenceShooting;
         _myAction.action.started += ShootInput;
 
 #if UNITY_EDITOR

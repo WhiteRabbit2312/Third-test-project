@@ -17,7 +17,7 @@ public class GameStages : NetworkBehaviour
 
     public override void Spawned()
     {
-        _timer = 9000;//15000; 5 minutes
+        _timer = 900;//15000; 5 minutes
         _basicSpawner = Runner.GetComponent<BasicSpawner>();
     }
 
@@ -34,6 +34,7 @@ public class GameStages : NetworkBehaviour
             else
             {
                 _resultPanel.SetActive(true);
+                //_resultPanel.GetComponent<ResultsPanel>().Init();
             }
         }  
     }

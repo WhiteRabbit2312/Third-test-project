@@ -28,16 +28,19 @@ public class Bullet : NetworkBehaviour
 
             if (playerStats.HP == 0)
             {
-                Debug.LogError("Death");
-                int currentKills = _killCounter.KillDictionary[Object.InputAuthority];
-                currentKills++;
-                _killCounter.KillDictionary.Set(Object.InputAuthority, currentKills);
-                Debug.LogError("Kills in bullet script: " + _killCounter.KillDictionary[Object.InputAuthority]);
+                //if (HasStateAuthority)
+                //{
+                    Debug.LogError("Death");
+                    int currentKills = _killCounter.KillDictionary[Object.InputAuthority];
+                    currentKills++;
+                    _killCounter.KillDictionary.Set(Object.InputAuthority, currentKills);
+                    Debug.LogError("Kills in bullet script: " + _killCounter.KillDictionary[Object.InputAuthority]);
 
-                foreach(var item in _killCounter.KillDictionary)
-                {
-                    Debug.LogError("Player: " + item.Key + "Bullet all kills: " + item.Value);
-                }
+                    foreach (var item in _killCounter.KillDictionary)
+                    {
+                        Debug.LogError("Player: " + item.Key + "Bullet all kills: " + item.Value);
+                    }
+                //}
 
             }
         }

@@ -12,7 +12,7 @@ public class PlayerStats : NetworkBehaviour
     public static Action OnKill;
     [Networked] public int HP { get; set; } = 100;
     [Networked] public int Kills { get; set; } = 0;
-    [Networked] public int Ammo { get; set; } = 70;
+    public int Ammo { get; set; } = 70;
 
     public override void Spawned()
     {

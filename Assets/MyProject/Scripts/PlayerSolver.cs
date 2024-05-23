@@ -33,7 +33,7 @@ public class PlayerSolver : NetworkBehaviour
             Destroy(_basedControllerRight);
             Destroy(_trackedPoseDriver);
             Destroy(_camera);
-            Destroy(_playerStats);
+            //Destroy(_playerStats);
             Destroy(_gun);
             Destroy(_killUI);
             Destroy(_gameStages);
