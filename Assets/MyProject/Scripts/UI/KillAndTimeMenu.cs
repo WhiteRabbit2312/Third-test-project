@@ -7,10 +7,13 @@ public class KillAndTimeMenu : NetworkBehaviour
 {
     [SerializeField] private NetworkObject _panel;
     [SerializeField] private InputActionReference _actionReferenceOpenMenu;
+    [SerializeField] private InputActionReference __actionReferenceOpenMenuOculus;
+
+
 
     void Update()
     {
-        if (_actionReferenceOpenMenu.action.IsPressed())//if (_playerInput.actions["UI Press"].IsPressed())
+        if (__actionReferenceOpenMenuOculus.action.IsPressed())//if (_playerInput.actions["UI Press"].IsPressed())
         {
             //Debug.LogError("Pressed");
             _panel.gameObject.SetActive(true);

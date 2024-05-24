@@ -20,6 +20,8 @@ public class PlayerSolver : NetworkBehaviour
     [SerializeField] private KillAndTimeMenu _killAndTimeMenu;
     [SerializeField] private KillUI _killUI;
     [SerializeField] private GameStages _gameStages;
+    [SerializeField] private GameObject _playerModel;
+
     public override void Spawned()
     {
         if (!HasInputAuthority)
@@ -38,6 +40,11 @@ public class PlayerSolver : NetworkBehaviour
             Destroy(_killUI);
             Destroy(_gameStages);
             Destroy(_killAndTimeMenu);
+        }
+        if(HasInputAuthority)
+        {
+            Debug.LogError("Destroy model");
+            Destroy(_playerModel);
         }
     }
 }
