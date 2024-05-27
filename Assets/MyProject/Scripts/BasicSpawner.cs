@@ -42,16 +42,17 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
 
     public void PlayerJoined(PlayerRef player)
     {
+        
         _killCounter = GameObject.FindObjectOfType<KillCounter>();
         _killCounter.KillDictionary.Set(player, 0);
-
+        /*
         Debug.LogError("Player name " + player);
-
+        
         foreach(var item in _killCounter.KillDictionary)
         {
             Debug.LogError("Player: " + item.Key);
         }
-
+        */
         if (player == Runner.LocalPlayer)
         {
             Runner.Spawn(PlayerPrefab, new Vector3(0, _spawnPointY, 0), Quaternion.identity, player);

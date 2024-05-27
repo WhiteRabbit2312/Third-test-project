@@ -21,7 +21,10 @@ public class PlayerSolver : NetworkBehaviour
     [SerializeField] private KillUI _killUI;
     [SerializeField] private GameStages _gameStages;
     [SerializeField] private GameObject _playerModel;
-
+    [SerializeField] private XRGrabInteractable _xRGrabInteractable;
+    [SerializeField] private XRGrabInteractable _xRGrabInteractableAmmo;
+    [SerializeField] private XRSimpleInteractable _xRSimpleInteractable;
+    [SerializeField] private XRSimpleInteractable _xRSimpleInteractableAmmo;
     public override void Spawned()
     {
         if (!HasInputAuthority)
@@ -40,6 +43,11 @@ public class PlayerSolver : NetworkBehaviour
             Destroy(_killUI);
             Destroy(_gameStages);
             Destroy(_killAndTimeMenu);
+            Destroy(_xRGrabInteractable);
+            Destroy(_xRGrabInteractableAmmo);
+            Destroy(_xRSimpleInteractable);
+            Destroy(_xRSimpleInteractableAmmo);
+            //Destroy(_head);
         }
         if(HasInputAuthority)
         {

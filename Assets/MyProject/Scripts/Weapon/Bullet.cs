@@ -20,7 +20,7 @@ public class Bullet : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out PlayerStats playerStats))
+        if (other.TryGetComponent(out PlayerStats playerStats) && other.GetComponent<NetworkObject>().InputAuthority != Object.InputAuthority)
         {
             playerStats.HP -= _damage;
 
@@ -28,21 +28,25 @@ public class Bullet : NetworkBehaviour
 
             if (playerStats.HP == 0)
             {
-                //if (HasStateAuthority)
-                //{
-                    Debug.LogError("Death");
-                    int currentKills = _killCounter.KillDictionary[Object.InputAuthority];
-                    currentKills++;
-                    _killCounter.KillDictionary.Set(Object.InputAuthority, currentKills);
-                    Debug.LogError("Kills in bullet script: " + _killCounter.KillDictionary[Object.InputAuthority]);
 
-                    foreach (var item in _killCounter.KillDictionary)
-                    {
-                        Debug.LogError("Player: " + item.Key + "Bullet all kills: " + item.Value);
-                    }
-                //}
+                Debug.LogError("Death");
+                int currentKills = _killCounter.KillDictionary[Object.InputAuthority];
+                currentKills++;
+                _killCounter.KillDictionary.Set(Object.InputAuthority, currentKills);
+                Debug.LogError("Kills in bullet script: " + _killCounter.KillDictionary[Object.InputAuthority]);
 
+                foreach (var item in _killCounter.KillDictionary)
+                {
+                    Debug.LogError("Player: " + item.Key + "Bullet all kills: " + item.Value);
+                }
+
+                
             }
+            //Runner.Despawn(Object);
+
         }
+        
+
     }
+
 }

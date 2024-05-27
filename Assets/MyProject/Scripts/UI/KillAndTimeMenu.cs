@@ -9,8 +9,6 @@ public class KillAndTimeMenu : NetworkBehaviour
     [SerializeField] private InputActionReference _actionReferenceOpenMenu;
     [SerializeField] private InputActionReference __actionReferenceOpenMenuOculus;
 
-
-
     void Update()
     {
         if (__actionReferenceOpenMenuOculus.action.IsPressed())//if (_playerInput.actions["UI Press"].IsPressed())

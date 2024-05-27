@@ -8,16 +8,23 @@ public class Ammunition : NetworkBehaviour
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private NetworkObject _gun;
     [SerializeField] private NetworkObject _ammoBox;
+    [SerializeField] private NetworkObject _ammoPlace;
     private XRGrabInteractable _grabInteractable;
     [SerializeField] private Shooting _shooting;
-    private int _fullAmmo = 70;
+    private int _fullAmmo = 40;
     private bool _grabAmmo;
     private Quaternion _setRotation = new Quaternion(0f, 0f, 0f, 0f);
-    private Vector3 _ammoScale = new Vector3(0.1f, 1, 0.1f);
+    private NetworkObject _noAmmo;
 
     public override void Spawned()
     {
         _grabInteractable = GetComponent<XRGrabInteractable>();
+        _noAmmo = Runner.Spawn(_ammoBox, _ammoPlace.transform.position);
+        _noAmmo.transform.rotation = _setRotation;
+        _noAmmo.gameObject.transform.SetParent(_gun.transform);
+        Rigidbody ammoRB1 = _noAmmo.GetComponent<Rigidbody>();
+        _shooting.Init(ammoRB1);
+
     }
 
     public override void FixedUpdateNetwork()
@@ -26,10 +33,11 @@ public class Ammunition : NetworkBehaviour
         {
             if (_grabAmmo)
             {
-                NetworkObject noAmmo = Runner.Spawn(_ammoBox, _gun.transform.position);
-                noAmmo.gameObject.transform.SetParent(_gun.transform);
-                noAmmo.transform.rotation = _setRotation;
-                Rigidbody ammoRB = noAmmo.GetComponent<Rigidbody>();
+                Runner.Despawn(_noAmmo);
+                _noAmmo = Runner.Spawn(_ammoBox, _ammoPlace.transform.position);
+                _noAmmo.gameObject.transform.SetParent(_gun.transform);
+                _noAmmo.transform.rotation = _setRotation;
+                Rigidbody ammoRB = _noAmmo.GetComponent<Rigidbody>();
                 _shooting.Init(ammoRB);
                 _grabAmmo = false;
             }
@@ -37,7 +45,7 @@ public class Ammunition : NetworkBehaviour
 
             transform.position = _ammunitionPlace.transform.position;
             transform.rotation = _setRotation;
-            transform.localScale = _ammoScale;
+            //transform.localScale = _ammoScale;
 
         }
     }
