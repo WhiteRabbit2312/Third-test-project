@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using Fusion;
 using UnityEngine.InputSystem;
@@ -11,15 +10,13 @@ public class KillAndTimeMenu : NetworkBehaviour
 
     void Update()
     {
-        if (__actionReferenceOpenMenuOculus.action.IsPressed())//if (_playerInput.actions["UI Press"].IsPressed())
+        if (__actionReferenceOpenMenuOculus.action.IsPressed())
         {
-            //Debug.LogError("Pressed");
             _panel.gameObject.SetActive(true);
         }
         
         else
         {
-            //Debug.LogError("UnPressed");
             _panel.gameObject.SetActive(false);
         }
     }

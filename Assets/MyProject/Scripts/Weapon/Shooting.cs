@@ -9,15 +9,17 @@ public class Shooting : NetworkBehaviour
     [SerializeField] private InputActionReference _actionReferenceShooting;
     [SerializeField] private InputActionReference _actionRemoveAmmoLeft;
     [SerializeField] private InputActionReference _actionRemoveAmmoRight;
-    private PlayerStats _playerStats;
-
-    private InputActionReference _myAction;
+    
     [SerializeField] private NetworkObject _bullet;
     [SerializeField] private NetworkObject _spawnBulletPos;
     [SerializeField] private NetworkObject _gunPlace;
     [SerializeField] private NetworkObject _ammoPlace;
+
+    private PlayerStats _playerStats;
+    private InputActionReference _myAction;
     private Rigidbody _ammoBoxRB;
     private XRGrabInteractable _grabInteractable;
+
     private Vector3 _gunScale = new Vector3(1f, 1, 1f);
     private Quaternion _gunRotation = new Quaternion(0f, 0f, 0f, 0f);
 
@@ -27,13 +29,6 @@ public class Shooting : NetworkBehaviour
         _grabInteractable = GetComponent<XRGrabInteractable>();
         _myAction = _actionReferenceShooting;
         _myAction.action.started += ShootInput;
-
-#if UNITY_EDITOR
-
-#else
-        _myAction = _actionReferenceShooting;
-#endif
-
     }
 
     public override void FixedUpdateNetwork()
@@ -49,8 +44,6 @@ public class Shooting : NetworkBehaviour
         {
             _ammoBoxRB.isKinematic = false;
             _ammoPlace.transform.DetachChildren();
-            //transform.DetachChildren();
-
         }
     }
 
@@ -66,7 +59,6 @@ public class Shooting : NetworkBehaviour
             if(_playerStats.Ammo > 0)
             {
                 _playerStats.Ammo--;
-                //Debug.LogError("Shoot");
                 NetworkObject nOBullet = Runner.Spawn(_bullet, transform.position, Quaternion.identity.normalized, Runner.LocalPlayer);
                 nOBullet.transform.rotation = transform.rotation;
             }

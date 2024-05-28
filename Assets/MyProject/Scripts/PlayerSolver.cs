@@ -27,6 +27,20 @@ public class PlayerSolver : NetworkBehaviour
     [SerializeField] private XRSimpleInteractable _xRSimpleInteractableAmmo;
     public override void Spawned()
     {
+        DestroyEnemyComponents();
+        HidePlayerModel();
+    }
+
+    private void HidePlayerModel()
+    {
+        if (HasInputAuthority)
+        {
+            Destroy(_playerModel);
+        }
+    }
+
+    private void DestroyEnemyComponents()
+    {
         if (!HasInputAuthority)
         {
             Destroy(_actionBasedContinuousMoveProvider);
@@ -38,7 +52,6 @@ public class PlayerSolver : NetworkBehaviour
             Destroy(_basedControllerRight);
             Destroy(_trackedPoseDriver);
             Destroy(_camera);
-            //Destroy(_playerStats);
             Destroy(_gun);
             Destroy(_killUI);
             Destroy(_gameStages);
@@ -47,12 +60,6 @@ public class PlayerSolver : NetworkBehaviour
             Destroy(_xRGrabInteractableAmmo);
             Destroy(_xRSimpleInteractable);
             Destroy(_xRSimpleInteractableAmmo);
-            //Destroy(_head);
-        }
-        if(HasInputAuthority)
-        {
-            Debug.LogError("Destroy model");
-            Destroy(_playerModel);
         }
     }
 }

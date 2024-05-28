@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
@@ -8,10 +7,9 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
 {
     public GameObject PlayerPrefab;
     private NetworkRunner _runner;
-    //[Networked] public NetworkDictionary<PlayerRef, PlayerStats> PlayerDictionary => default;
     public Dictionary<PlayerRef, PlayerStats> PlayerDictionary = new Dictionary<PlayerRef, PlayerStats>();
     private KillCounter _killCounter;
-    private float _spawnPointY = 0.55f;
+    private Vector3 _spawnPoint = new Vector3(0f, 0.55f, 0f);
 
     public async void StartGame(GameMode mode)
     {
@@ -42,9 +40,9 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
 
     public void PlayerJoined(PlayerRef player)
     {
-        
         _killCounter = GameObject.FindObjectOfType<KillCounter>();
         _killCounter.KillDictionary.Set(player, 0);
+
         /*
         Debug.LogError("Player name " + player);
         
@@ -55,7 +53,7 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
         */
         if (player == Runner.LocalPlayer)
         {
-            Runner.Spawn(PlayerPrefab, new Vector3(0, _spawnPointY, 0), Quaternion.identity, player);
+            Runner.Spawn(PlayerPrefab, _spawnPoint, Quaternion.identity, player);
         }
     }
 }

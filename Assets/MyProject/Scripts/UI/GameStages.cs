@@ -1,23 +1,21 @@
 using UnityEngine;
 using Fusion;
 using TMPro;
-using System;
 
 public class GameStages : NetworkBehaviour
 {
     [SerializeField] private GameObject _resultPanel;
     [SerializeField] private TextMeshProUGUI _timerText;
-    private const int _playersInGame = 1;
-    private int _oneSecondPerTick = 50;
-    private int _secondsInMinute = 60;
     
+    [Networked] private float _timer { get; set; }
 
-    [Networked] private int _timer { get; set; }
     private BasicSpawner _basicSpawner;
+    private int _playersInGame = 2;
+    private int _oneSecondPerTick = 3000;
 
     public override void Spawned()
     {
-        _timer = 1000;//15000; 5 minutes
+        _timer = 60*5; //5 minutes
         _basicSpawner = Runner.GetComponent<BasicSpawner>();
     }
 
@@ -27,14 +25,13 @@ public class GameStages : NetworkBehaviour
         {
             if (_timer > 0)
             {
-                _timerText.text = $"Time left: { (_timer / _oneSecondPerTick) / _secondsInMinute } : {(_timer / _oneSecondPerTick) % _secondsInMinute }";
-                _timer--;
+                _timerText.text = $"Time left: { _timer / _oneSecondPerTick} : {_timer  % _oneSecondPerTick }";
+                _timer -= Runner.DeltaTime;
             }
 
             else
             {
                 _resultPanel.SetActive(true);
-                //_resultPanel.GetComponent<ResultsPanel>().Init();
             }
         }  
     }

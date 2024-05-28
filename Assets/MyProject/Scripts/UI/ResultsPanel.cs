@@ -11,8 +11,7 @@ public class ResultsPanel : NetworkBehaviour
     public void OnEnable()
     {
         _killCounter = GameObject.FindObjectOfType<KillCounter>();
-        //_textResult.text = "Winner: " + _killCounter.KillDictionary.Max().Key + " Kills: " + _killCounter.KillDictionary.Max().Value.ToString();
-        Debug.LogError("Dictionary length: " + _killCounter.KillDictionary.Count);
+
         foreach(var item in _killCounter.KillDictionary)
         {
             _textResult[item.Key.AsIndex].text = item.Value.ToString();

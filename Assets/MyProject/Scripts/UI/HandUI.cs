@@ -6,7 +6,7 @@ public class HandUI : NetworkBehaviour
 {
     [SerializeField] private TextMeshProUGUI _textHP;
     [SerializeField] private TextMeshProUGUI _textAmmo;
-    [SerializeField] PlayerStats _playerStats;
+    [SerializeField] private PlayerStats _playerStats;
 
     public override void FixedUpdateNetwork()
     {
