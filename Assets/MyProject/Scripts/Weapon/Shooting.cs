@@ -21,7 +21,6 @@ public class Shooting : NetworkBehaviour
     private XRGrabInteractable _grabInteractable;
 
     private Vector3 _gunScale = new Vector3(1f, 1, 1f);
-    private Quaternion _gunRotation = new Quaternion(0f, 0f, 0f, 0f);
 
     public override void Spawned()
     {
@@ -36,7 +35,7 @@ public class Shooting : NetworkBehaviour
         if (!_grabInteractable.isSelected)
         {
             transform.position = _gunPlace.transform.position;
-            transform.rotation = _gunRotation;
+            transform.rotation = _gunPlace.transform.rotation;
             transform.localScale = _gunScale;
         }
 
