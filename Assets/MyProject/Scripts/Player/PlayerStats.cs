@@ -7,7 +7,7 @@ public class PlayerStats : NetworkBehaviour
     private BasicSpawner _basicSpawner;
     [Networked] public int HP { get; set; } = 100;
     [Networked] public int Kills { get; set; } = 0;
-    public int Ammo { get; set; } = 10;
+    [Networked] public int Ammo { get; set; } = 40;
 
     public override void Spawned()
     {

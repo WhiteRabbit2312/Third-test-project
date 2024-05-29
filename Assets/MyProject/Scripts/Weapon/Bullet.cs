@@ -1,5 +1,6 @@
 using UnityEngine;
 using Fusion;
+using System.Collections;
 
 public class Bullet : NetworkBehaviour
 {
@@ -19,7 +20,7 @@ public class Bullet : NetworkBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out PlayerStats playerStats) 
-            && playerStats.Object.InputAuthority != Object.InputAuthority)
+            && other.GetComponent<NetworkObject>().InputAuthority != Object.InputAuthority)
         {
             playerStats.HP -= _damage;
 
@@ -41,10 +42,13 @@ public class Bullet : NetworkBehaviour
 
                 
             }
+            
 
         }
-        
 
     }
+
+
+    
 
 }

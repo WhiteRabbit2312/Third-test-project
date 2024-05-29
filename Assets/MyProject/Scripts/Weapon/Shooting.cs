@@ -39,9 +39,10 @@ public class Shooting : NetworkBehaviour
             transform.localScale = _gunScale;
         }
 
-        if (_actionRemoveAmmoLeft.action.IsPressed() || _actionRemoveAmmoRight.action.IsPressed())
+        if (_actionRemoveAmmoRight.action.IsPressed() && HasInputAuthority)
         {
             _ammoBoxRB.isKinematic = false;
+            _ammoBoxRB.gameObject.transform.SetParent(null);
             _ammoPlace.transform.DetachChildren();
         }
     }
@@ -53,12 +54,14 @@ public class Shooting : NetworkBehaviour
 
     public void ShootInput(InputAction.CallbackContext context)
     {
-        if (HasInputAuthority && _grabInteractable.isSelected)
+        if (HasStateAuthority && _grabInteractable.isSelected)
         {
             if(_playerStats.Ammo > 0)
             {
                 _playerStats.Ammo--;
-                NetworkObject nOBullet = Runner.Spawn(_bullet, transform.position, Quaternion.identity.normalized, Runner.LocalPlayer);
+
+                NetworkObject nOBullet = Runner.Spawn(_bullet, _spawnBulletPos.transform.position/*new Vector3(transform.position.x,
+                    transform.position.y, transform.position.z)*/, Quaternion.identity.normalized, Runner.LocalPlayer);
                 nOBullet.transform.rotation = transform.rotation;
             }
         }

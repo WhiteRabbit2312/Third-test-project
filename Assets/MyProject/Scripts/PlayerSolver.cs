@@ -35,7 +35,7 @@ public class PlayerSolver : NetworkBehaviour
     {
         if (HasInputAuthority)
         {
-            Destroy(_playerModel);
+            _playerModel.SetActive(false);
         }
     }
 

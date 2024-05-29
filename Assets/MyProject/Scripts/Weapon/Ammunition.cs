@@ -29,7 +29,7 @@ public class Ammunition : NetworkBehaviour
     {
         if (!_grabInteractable.isSelected)
         {
-            if (_grabAmmo)
+            if (_grabAmmo && HasInputAuthority)
             {
                 Runner.Despawn(_noAmmo);
                 SetAmmoToGun();

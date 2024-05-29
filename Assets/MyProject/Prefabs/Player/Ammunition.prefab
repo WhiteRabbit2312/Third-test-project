@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7023358009797949404}
   - component: {fileID: 8845544897990852187}
   - component: {fileID: 6719587204624048949}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GunClip (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2400317770075255405}
   - component: {fileID: 7682092311950472451}
   - component: {fileID: -1788836528784234580}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ammunition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
