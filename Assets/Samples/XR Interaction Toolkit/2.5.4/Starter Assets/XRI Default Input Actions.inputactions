@@ -1017,7 +1017,7 @@
                 {
                     "name": "",
                     "id": "cf018904-cee7-4567-9df6-7578a35e1c80",
-                    "path": "<XRSimulatedController>/triggerButton",
+                    "path": "<XRSimulatedController>{RightHand}/triggerButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1028,7 +1028,7 @@
                 {
                     "name": "",
                     "id": "243ddf4f-3b2d-46ca-9b8b-159165b37f3b",
-                    "path": "<OculusTouchController>/triggerPressed",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -12,9 +12,12 @@ public class ResultsPanel : NetworkBehaviour
     {
         _killCounter = GameObject.FindObjectOfType<KillCounter>();
 
+        Debug.LogError("Kill dictionary length: " + _killCounter.KillDictionary.Count + " Text dictionary: " + _textResult.Length);
+        int i = 0; 
         foreach(var item in _killCounter.KillDictionary)
         {
-            _textResult[item.Key.AsIndex].text = item.Value.ToString();
+            _textResult[i].text = "Player " + (i + 1) + " kills: " + item.Value.ToString();
+            i++;
         }
 
         Debug.LogError("Result kill " + _killCounter.KillDictionary.Max().Key + " Kills: " + _killCounter.KillDictionary.Max().Value.ToString());

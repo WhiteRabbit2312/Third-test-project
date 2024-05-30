@@ -10,7 +10,7 @@ public class KillAndTimeMenu : NetworkBehaviour
 
     void Update()
     {
-        if (__actionReferenceOpenMenuOculus.action.IsPressed())
+        if (_actionReferenceOpenMenu.action.IsPressed() || __actionReferenceOpenMenuOculus.action.IsPressed())
         {
             _panel.gameObject.SetActive(true);
         }

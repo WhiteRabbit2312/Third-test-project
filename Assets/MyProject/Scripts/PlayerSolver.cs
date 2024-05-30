@@ -25,6 +25,7 @@ public class PlayerSolver : NetworkBehaviour
     [SerializeField] private XRGrabInteractable _xRGrabInteractableAmmo;
     [SerializeField] private XRSimpleInteractable _xRSimpleInteractable;
     [SerializeField] private XRSimpleInteractable _xRSimpleInteractableAmmo;
+    [SerializeField] private GameObject _resultPanel;
     public override void Spawned()
     {
         DestroyEnemyComponents();
@@ -60,6 +61,7 @@ public class PlayerSolver : NetworkBehaviour
             Destroy(_xRGrabInteractableAmmo);
             Destroy(_xRSimpleInteractable);
             Destroy(_xRSimpleInteractableAmmo);
+            Destroy(_resultPanel);
         }
     }
 }

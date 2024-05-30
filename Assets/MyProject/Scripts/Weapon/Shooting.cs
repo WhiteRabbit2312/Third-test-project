@@ -9,24 +9,28 @@ public class Shooting : NetworkBehaviour
     [SerializeField] private InputActionReference _actionReferenceShooting;
     [SerializeField] private InputActionReference _actionRemoveAmmoLeft;
     [SerializeField] private InputActionReference _actionRemoveAmmoRight;
-    
+
+    [SerializeField] private InputActionReference _actionNButton;
+
     [SerializeField] private NetworkObject _bullet;
     [SerializeField] private NetworkObject _spawnBulletPos;
     [SerializeField] private NetworkObject _gunPlace;
     [SerializeField] private NetworkObject _ammoPlace;
 
+    [SerializeField] private Ammunition _ammunition;
     private PlayerStats _playerStats;
     private InputActionReference _myAction;
     private Rigidbody _ammoBoxRB;
     private XRGrabInteractable _grabInteractable;
 
-    private Vector3 _gunScale = new Vector3(1f, 1, 1f);
+    private XRController _xRController;
+    private Vector3 _gunScale = new Vector3(1f, 1f, 1f);
 
     public override void Spawned()
     {
         _playerStats = GetComponentInParent<PlayerStats>();
         _grabInteractable = GetComponent<XRGrabInteractable>();
-        _myAction = _actionReferenceShooting;
+        _myAction = _actionReferenceShootingUnityEditor;
         _myAction.action.started += ShootInput;
     }
 
@@ -39,11 +43,12 @@ public class Shooting : NetworkBehaviour
             transform.localScale = _gunScale;
         }
 
-        if (_actionRemoveAmmoRight.action.IsPressed() && HasInputAuthority)
+        if (_actionRemoveAmmoRight.action.IsPressed() || _actionNButton.action.IsPressed())
         {
             _ammoBoxRB.isKinematic = false;
             _ammoBoxRB.gameObject.transform.SetParent(null);
             _ammoPlace.transform.DetachChildren();
+            _ammunition.AmmoSetToGun = false;
         }
     }
 
@@ -54,7 +59,7 @@ public class Shooting : NetworkBehaviour
 
     public void ShootInput(InputAction.CallbackContext context)
     {
-        if (HasStateAuthority && _grabInteractable.isSelected)
+        if (HasInputAuthority && _grabInteractable.isSelected && _ammunition.AmmoSetToGun)
         {
             if(_playerStats.Ammo > 0)
             {

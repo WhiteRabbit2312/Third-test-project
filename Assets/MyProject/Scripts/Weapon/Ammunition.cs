@@ -18,18 +18,20 @@ public class Ammunition : NetworkBehaviour
 
     private int _fullAmmo = 40;
     private bool _grabAmmo;
+    public bool AmmoSetToGun = true;
 
     public override void Spawned()
     {
         _grabInteractable = GetComponent<XRGrabInteractable>();
-        SetAmmoToGun();
+        if(HasInputAuthority)
+            SetAmmoToGun();
     }
 
     public override void FixedUpdateNetwork()
     {
-        if (!_grabInteractable.isSelected)
+        if (!_grabInteractable.isSelected && HasInputAuthority)
         {
-            if (_grabAmmo && HasInputAuthority)
+            if (_grabAmmo)
             {
                 Runner.Despawn(_noAmmo);
                 SetAmmoToGun();
@@ -56,6 +58,7 @@ public class Ammunition : NetworkBehaviour
         {
             if (!_grabInteractable.isSelected)
             {
+                AmmoSetToGun = true;
                 _playerStats.Ammo = _fullAmmo;
                 _grabAmmo = true;
             }

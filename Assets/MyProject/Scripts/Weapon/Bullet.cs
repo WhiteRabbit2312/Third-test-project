@@ -19,8 +19,8 @@ public class Bullet : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out PlayerStats playerStats) 
-            && other.GetComponent<NetworkObject>().InputAuthority != Object.InputAuthority)
+        if (other.TryGetComponent(out PlayerStats playerStats) )
+            //&& other.GetComponent<NetworkObject>().InputAuthority != Object.InputAuthority)
         {
             playerStats.HP -= _damage;
 

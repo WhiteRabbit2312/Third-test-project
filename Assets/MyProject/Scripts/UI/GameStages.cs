@@ -7,7 +7,7 @@ public class GameStages : NetworkBehaviour
     [SerializeField] private GameObject _resultPanel;
     [SerializeField] private TextMeshProUGUI _timerText;
     
-    [Networked] private int _timer { get; set; }
+    [Networked] private int _timer { get; set; } = 150;//5 minutes
 
     private BasicSpawner _basicSpawner;
     private int _playersInGame = 2;
@@ -16,7 +16,6 @@ public class GameStages : NetworkBehaviour
 
     public override void Spawned()
     {
-        _timer = 15000;//60*5; //5 minutes
         _basicSpawner = Runner.GetComponent<BasicSpawner>();
     }
 
