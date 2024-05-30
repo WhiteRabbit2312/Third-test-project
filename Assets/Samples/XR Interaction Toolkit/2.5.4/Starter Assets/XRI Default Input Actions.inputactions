@@ -792,7 +792,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shoot",
+                    "name": "ShootLeft",
                     "type": "Button",
                     "id": "9db3be76-a9ec-404b-9a95-1767fe14bcb6",
                     "expectedControlType": "Button",
@@ -801,9 +801,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ShootOculus",
+                    "name": "ShootRight",
+                    "type": "Button",
+                    "id": "f1c8c097-fbbb-4703-927d-379fa41fdf6c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShootOculusLeft",
                     "type": "Button",
                     "id": "dcdd3af0-40bc-479f-86ce-b361ab2ed8eb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShootOculusRight",
+                    "type": "Button",
+                    "id": "5a65085c-834c-4da9-ab0f-9470ea217530",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -831,6 +849,24 @@
                     "name": "RemoveAmmoLeft",
                     "type": "Button",
                     "id": "3bf44bc5-ec64-4b86-ad1d-eff733f7ff28",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GrabLeft",
+                    "type": "Button",
+                    "id": "973374c9-8099-422a-b8a7-6928aad103bb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GrabRight",
+                    "type": "Button",
+                    "id": "e4cc616a-0225-4b53-94e0-a838494c4888",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -1017,22 +1053,22 @@
                 {
                     "name": "",
                     "id": "cf018904-cee7-4567-9df6-7578a35e1c80",
-                    "path": "<XRSimulatedController>{RightHand}/triggerButton",
+                    "path": "<XRSimulatedController>{LeftHand}/triggerButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "ShootLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "243ddf4f-3b2d-46ca-9b8b-159165b37f3b",
-                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
+                    "path": "<OculusTouchController>{LeftHand}/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShootOculus",
+                    "action": "ShootOculusLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1050,7 +1086,7 @@
                 {
                     "name": "",
                     "id": "c9e305bd-09db-4def-b99b-a839575a5254",
-                    "path": "<OculusTouchController>{RightHand}/secondaryButton",
+                    "path": "<XRSimulatedController>{RightHand}/primaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1066,6 +1102,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "RemoveAmmoLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ad9340e-ea49-4c13-8dc5-882690ecbd98",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootOculusRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "828b30ba-8180-4053-9f67-f19e038ca64d",
+                    "path": "<XRSimulatedController>{RightHand}/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23dbec4d-6d8e-4787-92a3-ac40870aeb5b",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "486a88be-a524-4e5c-8b26-a01830f455fd",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -2716,6 +2796,262 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pinch Gap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "TestXR",
+            "id": "3dcb8ec3-89ce-4e1d-a09e-ab8c1635b647",
+            "actions": [
+                {
+                    "name": "TestGrabLeft",
+                    "type": "Button",
+                    "id": "b2ccb97b-726f-48a1-80b6-3360cd362c51",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TestGrabRight",
+                    "type": "Button",
+                    "id": "aa3d27b6-5b66-4483-b909-8fd2220c9428",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TestRemoveLeft",
+                    "type": "Button",
+                    "id": "649d139f-565d-4852-9091-e80a21bf9b5d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TestRemoveRight",
+                    "type": "Button",
+                    "id": "f0293a1c-1548-45f2-a775-df48b8e862be",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TestShootLeft",
+                    "type": "Button",
+                    "id": "7609d485-9fc7-492d-8dc0-50066c452ba6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TestShootRight",
+                    "type": "Button",
+                    "id": "f5704649-95e2-460a-9f76-0df510dbe82b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7e30cd7c-fbdf-4f48-af88-85264c3fb3f6",
+                    "path": "<XRSimulatedController>{LeftHand}/gripButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestGrabLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2d68656-55aa-4f1b-8e13-460833aad8e3",
+                    "path": "<XRSimulatedController>{RightHand}/gripButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestGrabRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93391a69-1120-4a46-a821-f804d66e3ab6",
+                    "path": "<XRSimulatedController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestRemoveLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cb390b29-305f-4d0a-88ec-e81db6a0728c",
+                    "path": "<XRSimulatedController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestRemoveRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "272612d4-cde1-48ac-b1a8-4d52ea55aacf",
+                    "path": "<XRSimulatedController>{LeftHand}/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestShootLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c56ba614-50bd-4979-806d-b36d0d5a1111",
+                    "path": "<XRSimulatedController>{RightHand}/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestShootRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Oculus XRI",
+            "id": "6f5d0c72-e5da-48f7-a708-3d569dc1cd48",
+            "actions": [
+                {
+                    "name": "ShootLeft",
+                    "type": "Button",
+                    "id": "048c25e2-2af4-4fa5-86ef-1134539040f8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShootRight",
+                    "type": "Button",
+                    "id": "d925a13e-6b16-4a69-a732-97f665afa498",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GrabLeft",
+                    "type": "Button",
+                    "id": "84a477e5-fe00-4c2c-a0e7-a4e79e98c7b5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GrabRight",
+                    "type": "Button",
+                    "id": "6894b5f2-b35e-47cd-a04f-4df8974d2c23",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RemoveLeft",
+                    "type": "Button",
+                    "id": "828383a2-4970-45a8-abf4-135a6ad30225",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RemoveRight",
+                    "type": "Button",
+                    "id": "0c088b63-2061-4448-b5cf-268f2df0f3aa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4537544b-526f-459d-b5c3-03edad90ce4b",
+                    "path": "<OculusTouchController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b09aff35-2325-4c25-9cda-baf02d42e153",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "853cdc1d-5409-43d0-aa28-42cd329223d9",
+                    "path": "<OculusTouchController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e0d8e9dd-6014-4191-bb26-c54adfe1e66c",
+                    "path": "<OculusTouchController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6af1fc8e-6e4d-427d-9120-0d2c5df7b9f0",
+                    "path": "<OculusTouchController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RemoveLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42d73251-74aa-47a9-95d9-63e9ce661275",
+                    "path": "<OculusTouchController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RemoveRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

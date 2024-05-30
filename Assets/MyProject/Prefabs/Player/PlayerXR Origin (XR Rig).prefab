@@ -1671,10 +1671,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af808fccfff6b384fa8abd19e99de4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionReferenceShootingUnityEditor: {fileID: 1671042214943911564, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  _actionReferenceShooting: {fileID: 237081809386586623, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _actionReferenceShootingUnityEditorRight: {fileID: 0}
+  _actionReferenceShootingUnityEditorLeft: {fileID: 0}
+  _actionReferenceShootingLeft: {fileID: 0}
+  _actionReferenceShootingLeftRight: {fileID: 0}
   _actionRemoveAmmoLeft: {fileID: 0}
   _actionRemoveAmmoRight: {fileID: 0}
+  _actionRGrabLeft: {fileID: 0}
+  _actionRGrabRight: {fileID: 0}
+  _testShootLeft: {fileID: 0}
+  _testShootRight: {fileID: 0}
+  _testGrabLeft: {fileID: 0}
+  _testGrabRight: {fileID: 0}
+  _testRemoveLeft: {fileID: 0}
+  _testRemoveRight: {fileID: 0}
   _actionNButton: {fileID: 0}
   _bullet: {fileID: 6791422878744144797, guid: 61b8c981235d2b24fafa28b2f43fdd6e, type: 3}
   _spawnBulletPos: {fileID: 832022414325881808}
@@ -4997,10 +5007,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af808fccfff6b384fa8abd19e99de4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionReferenceShootingUnityEditor: {fileID: 1671042214943911564, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  _actionReferenceShooting: {fileID: 237081809386586623, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  _actionRemoveAmmoLeft: {fileID: -2549278407524831336, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  _actionRemoveAmmoRight: {fileID: 3949060611318666006, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _actionReferenceShootingUnityEditorRight: {fileID: 1671042214943911564, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _actionReferenceShootingUnityEditorLeft: {fileID: 2628979216478102409, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _actionReferenceShootingLeft: {fileID: 6666573852251325211, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _actionReferenceShootingLeftRight: {fileID: -8671081713071858664, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _actionRemoveAmmoLeft: {fileID: 1886890414048031748, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _actionRemoveAmmoRight: {fileID: -2843410300625840496, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _actionRGrabLeft: {fileID: 2760151274920249794, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _actionRGrabRight: {fileID: 5066388767849567755, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _testShootLeft: {fileID: 870184203860730193, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _testShootRight: {fileID: 4314516279349827406, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _testGrabLeft: {fileID: 9016227705517951667, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _testGrabRight: {fileID: -8405774238739796257, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _testRemoveLeft: {fileID: 4706785412516093837, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  _testRemoveRight: {fileID: 7815824994455430340, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   _actionNButton: {fileID: 6743218394315203063, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   _bullet: {fileID: 6791422878744144797, guid: 61b8c981235d2b24fafa28b2f43fdd6e, type: 3}
   _spawnBulletPos: {fileID: 832022414325881808}
