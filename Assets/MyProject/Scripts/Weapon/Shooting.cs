@@ -7,6 +7,7 @@ public class Shooting : NetworkBehaviour
 {
     [SerializeField] private InputActionReference _actionReferenceShootingUnityEditorRight;
     [SerializeField] private InputActionReference _actionReferenceShootingUnityEditorLeft;
+
     [SerializeField] private InputActionReference _actionReferenceShootingLeft;
     [SerializeField] private InputActionReference _actionReferenceShootingLeftRight;
     [SerializeField] private InputActionReference _actionRemoveAmmoLeft;
@@ -23,7 +24,6 @@ public class Shooting : NetworkBehaviour
     [SerializeField] private InputActionReference _testRemoveRight;
 
     [Space]
-
     [SerializeField] private InputActionReference _actionNButton;
 
     [SerializeField] private NetworkObject _bullet;
@@ -42,43 +42,43 @@ public class Shooting : NetworkBehaviour
 
     private XRController _xRController;
     private Vector3 _gunScale = new Vector3(1f, 1f, 1f);
-    private bool _allowToGrab = true;
+    private int _grabbedLayer = 11;
+    private int _interactLayer = 6;
 
     public override void Spawned()
     {
         _playerStats = GetComponentInParent<PlayerStats>();
-        _grabInteractable = GetComponent<XRGrabInteractable>();
-        
-        
+        _grabInteractable = GetComponent<XRGrabInteractable>(); 
     }
 
     public override void FixedUpdateNetwork()
     {
-        if (_grabInteractable.isSelected)
+        if (_grabInteractable.isSelected && gameObject.layer != _grabbedLayer)
         {
+            gameObject.layer = _grabbedLayer;
+
             Debug.LogError("Grab");
-            if (_actionRGrabLeft.action.IsPressed())
+            if (_testGrabLeft.action.IsPressed())
             {
                 Debug.LogError("Left grab");
-                _myActionShoot = _actionReferenceShootingLeft;
-                _myActionRemoveAmmo = _actionRemoveAmmoLeft;
+                _myActionShoot = _testShootLeft;
+                _myActionRemoveAmmo = _testRemoveLeft;
                 _myActionShoot.action.started += ShootInput;
             }
 
-            if (_actionRGrabRight.action.IsPressed())
+            if (_testGrabRight.action.IsPressed())
             {
                 Debug.LogError("Right grab");
-                _myActionShoot = _actionReferenceShootingLeftRight;
-                _myActionRemoveAmmo = _actionRemoveAmmoRight;
+                _myActionShoot = _testShootRight;
+                _myActionRemoveAmmo = _testRemoveRight;
                 _myActionShoot.action.started += ShootInput;
-
             }
-
         }
 
 
         if (!_grabInteractable.isSelected)
         {
+            gameObject.layer = _interactLayer;
             _myActionShoot.action.started -= ShootInput;
             transform.position = _gunPlace.transform.position;
             transform.rotation = _gunPlace.transform.rotation;

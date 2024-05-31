@@ -33,5 +33,4 @@ public class PlayerStats : NetworkBehaviour
     {
         transform.position = _spawnPoint;
     }
-
 }

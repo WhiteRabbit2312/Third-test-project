@@ -16,7 +16,8 @@ public class ResultsPanel : NetworkBehaviour
         int i = 0; 
         foreach(var item in _killCounter.KillDictionary)
         {
-            _textResult[i].text = "Player " + (i + 1) + " kills: " + item.Value.ToString();
+            int plyaerNumber = i + 1;
+            _textResult[i].text = "Player " + plyaerNumber + " kills: " + item.Value.ToString();
             i++;
         }
 

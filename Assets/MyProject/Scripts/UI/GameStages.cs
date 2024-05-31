@@ -7,7 +7,7 @@ public class GameStages : NetworkBehaviour
     [SerializeField] private GameObject _resultPanel;
     [SerializeField] private TextMeshProUGUI _timerText;
     
-    [Networked] private int _timer { get; set; } = 150;//5 minutes
+    [Networked] private int _timer { get; set; } = 15000;//5 minutes
 
     private BasicSpawner _basicSpawner;
     private int _playersInGame = 2;

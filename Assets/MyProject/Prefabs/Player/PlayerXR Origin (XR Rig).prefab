@@ -58,7 +58,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.89, y: 0.67102134, z: 0.6342187}
+  m_Size: {x: 0.65, y: 0.67102134, z: 0.6342187}
   m_Center: {x: -0.106657445, y: 0.101259835, z: -0.1828907}
 --- !u!54 &5340477509286485799
 Rigidbody:
@@ -936,7 +936,7 @@ Transform:
   m_GameObject: {fileID: 3977985370414761640}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.15, y: 0.853, z: 0.38}
+  m_LocalPosition: {x: 0.15, y: 0.853, z: 0.31700003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2053,6 +2053,7 @@ GameObject:
   - component: {fileID: 4286175117762751277}
   - component: {fileID: 3976788896931304023}
   - component: {fileID: 1628263897392311411}
+  - component: {fileID: 7857881265501134338}
   m_Layer: 0
   m_Name: PlayerXR Origin (XR Rig)
   m_TagString: Player
@@ -2075,8 +2076,8 @@ Transform:
   m_Children:
   - {fileID: 6676364115708736974}
   - {fileID: 2961364806388546371}
-  - {fileID: 3028346783050781238}
   - {fileID: 7934526740743899328}
+  - {fileID: 3028346783050781238}
   - {fileID: 1409459112877357800}
   - {fileID: 3031744429120791533}
   - {fileID: 697460023478559047}
@@ -2126,7 +2127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 1040647917030869391}
-  m_MoveSpeed: 1
+  m_MoveSpeed: 3
   m_EnableStrafe: 1
   m_EnableFly: 0
   m_UseGravity: 1
@@ -2173,12 +2174,12 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects:
   - {fileID: 130267891912038473}
-  - {fileID: 6938900529228030491}
-  - {fileID: 4263111732592706391}
-  - {fileID: 937603108885117935}
   - {fileID: 6169620460582292637}
   - {fileID: 832022414325881808}
   - {fileID: 8771228825419380549}
+  - {fileID: 6938900529228030491}
+  - {fileID: 4263111732592706391}
+  - {fileID: 937603108885117935}
   - {fileID: 5152458145644432130}
   - {fileID: 4838897706186516882}
   - {fileID: 2742035434066587446}
@@ -2203,7 +2204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 1040647917030869391}
-  m_TurnSpeed: 60
+  m_TurnSpeed: 120
   m_LeftHandTurnAction:
     m_UseReference: 0
     m_Action:
@@ -2311,7 +2312,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.84
-  m_Radius: 0.24
+  m_Radius: 0.29
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -2332,6 +2333,33 @@ MonoBehaviour:
   m_LocomotionProvider: {fileID: 5763303092683366445}
   m_MinHeight: 0
   m_MaxHeight: Infinity
+--- !u!54 &7857881265501134338
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5060757962883545959}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5230982559035871526
 GameObject:
   m_ObjectHideFlags: 0
@@ -4913,8 +4941,8 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
-  m_SelectMode: 0
-  m_FocusMode: 1
+  m_SelectMode: 1
+  m_FocusMode: 0
   m_CustomReticle: {fileID: 0}
   m_AllowGazeInteraction: 0
   m_AllowGazeSelect: 0
@@ -5067,8 +5095,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.13, y: 0.1725646, z: 0.0820587}
-  m_Center: {x: 0.0039185286, y: 0.029318497, z: -0.07057537}
+  m_Size: {x: 0.09, y: 0.1725646, z: 0.10664743}
+  m_Center: {x: 0.0039185286, y: 0.029318497, z: -0.058281004}
 --- !u!114 &2591090187101929105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5631,7 +5659,7 @@ Transform:
   m_GameObject: {fileID: 8590145731672226659}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.127, y: 0.832, z: 0.36099997}
+  m_LocalPosition: {x: -0.127, y: 0.832, z: 0.298}
   m_LocalScale: {x: 0.1404175, y: 0.22318701, z: 0.19145767}
   m_ConstrainProportionsScale: 0
   m_Children: []

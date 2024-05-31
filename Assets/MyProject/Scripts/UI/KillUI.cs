@@ -15,6 +15,7 @@ public class KillUI : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        _textKill.text = _killCounter.KillDictionary[Object.InputAuthority].ToString();
+        if(_killCounter != null)
+            _textKill.text = "Kills: " + _killCounter.KillDictionary[Object.InputAuthority].ToString();
     }
 }
