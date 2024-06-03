@@ -5,9 +5,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Shooting : NetworkBehaviour
 {
-    [SerializeField] private InputActionReference _actionReferenceShootingUnityEditorRight;
-    [SerializeField] private InputActionReference _actionReferenceShootingUnityEditorLeft;
-
     [SerializeField] private InputActionReference _actionReferenceShootingLeft;
     [SerializeField] private InputActionReference _actionReferenceShootingLeftRight;
     [SerializeField] private InputActionReference _actionRemoveAmmoLeft;
@@ -40,7 +37,6 @@ public class Shooting : NetworkBehaviour
     private Rigidbody _ammoBoxRB;
     private XRGrabInteractable _grabInteractable;
 
-    private XRController _xRController;
     private Vector3 _gunScale = new Vector3(1f, 1f, 1f);
     private int _grabbedLayer = 11;
     private int _interactLayer = 6;
@@ -48,7 +44,7 @@ public class Shooting : NetworkBehaviour
     public override void Spawned()
     {
         _playerStats = GetComponentInParent<PlayerStats>();
-        _grabInteractable = GetComponent<XRGrabInteractable>(); 
+        _grabInteractable = GetComponent<XRGrabInteractable>();
     }
 
     public override void FixedUpdateNetwork()
@@ -57,10 +53,9 @@ public class Shooting : NetworkBehaviour
         {
             gameObject.layer = _grabbedLayer;
 
-            Debug.LogError("Grab");
+            /*
             if (_testGrabLeft.action.IsPressed())
             {
-                Debug.LogError("Left grab");
                 _myActionShoot = _testShootLeft;
                 _myActionRemoveAmmo = _testRemoveLeft;
                 _myActionShoot.action.started += ShootInput;
@@ -68,30 +63,60 @@ public class Shooting : NetworkBehaviour
 
             if (_testGrabRight.action.IsPressed())
             {
-                Debug.LogError("Right grab");
                 _myActionShoot = _testShootRight;
                 _myActionRemoveAmmo = _testRemoveRight;
                 _myActionShoot.action.started += ShootInput;
             }
+            */
+            if (_actionRGrabLeft.action.IsPressed())
+            {
+                _myActionShoot = _actionReferenceShootingLeft;
+                _myActionRemoveAmmo = _actionRemoveAmmoLeft; 
+            }
+
+            if (_actionRGrabRight.action.IsPressed())
+            {
+                _myActionShoot = _actionReferenceShootingLeftRight;
+                _myActionRemoveAmmo = _actionRemoveAmmoRight;
+            }
+
+            _myActionShoot.action.started += ShootInput;
         }
 
 
         if (!_grabInteractable.isSelected)
         {
-            gameObject.layer = _interactLayer;
-            _myActionShoot.action.started -= ShootInput;
-            transform.position = _gunPlace.transform.position;
-            transform.rotation = _gunPlace.transform.rotation;
-            transform.localScale = _gunScale;
+            SetGunToSoket();
         }
 
-        if (_myActionRemoveAmmo.action.IsPressed() || _actionNButton.action.IsPressed())
+        if (_myActionRemoveAmmo != null && _myActionRemoveAmmo.action.IsPressed())
         {
-            _ammoBoxRB.isKinematic = false;
-            _ammoBoxRB.gameObject.transform.SetParent(null);
-            _ammoPlace.transform.DetachChildren();
-            _ammunition.AmmoSetToGun = false;
+            RemoveAmmo();
         }
+
+    }
+
+    private void SetGunToSoket()
+    {
+        gameObject.layer = _interactLayer;
+
+        transform.position = _gunPlace.transform.position;
+        transform.rotation = _gunPlace.transform.rotation;
+        transform.localScale = _gunScale;
+
+        if (_myActionShoot != null)
+        {
+            _myActionShoot.action.started -= ShootInput;
+        }
+    }
+
+    private void RemoveAmmo()
+    {
+        _ammoBoxRB.isKinematic = false;
+        _ammoBoxRB.gameObject.transform.SetParent(null);
+        _ammoPlace.transform.DetachChildren();
+        _ammunition.AmmoSetToGun = false;
+        _playerStats.Ammo = 0;
     }
 
     public void Init(Rigidbody no)

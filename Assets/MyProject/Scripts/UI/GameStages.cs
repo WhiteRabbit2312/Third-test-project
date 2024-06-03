@@ -13,6 +13,7 @@ public class GameStages : NetworkBehaviour
     private int _playersInGame = 2;
     private int _oneSecondPerTick = 50;
     private int _ticksInSecond = 60;
+    private int _countDown = 2;
 
     public override void Spawned()
     {
@@ -26,9 +27,7 @@ public class GameStages : NetworkBehaviour
             if (_timer > 0)
             {
                 _timerText.text = $"Time left: { (_timer / _oneSecondPerTick) / _ticksInSecond } : {(_timer / _oneSecondPerTick) % _ticksInSecond }";
-
-                //_timerText.text = $"Time left: { _timer / _oneSecondPerTick} : {_timer  % _oneSecondPerTick }";
-                _timer -= 2;
+                _timer -= _countDown;
                 
             }
 

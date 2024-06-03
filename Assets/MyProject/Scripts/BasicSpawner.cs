@@ -11,12 +11,19 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
     private KillCounter _killCounter;
     private Vector3 _spawnPoint = new Vector3(0f, 0.55f, 0f);
 
+    private void Awake()
+    {
+        GameObject objectToDestroy = GameObject.Find("");
+    }
+
     public async void StartGame(GameMode mode)
     {
         if (_runner != null)
             return;
 
-        _runner = GetComponent<NetworkRunner>();
+
+        _runner = gameObject.AddComponent<NetworkRunner>();
+
         var scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex);
         var sceneInfo = new NetworkSceneInfo();
         if (scene.IsValid)
@@ -43,14 +50,6 @@ public class BasicSpawner : SimulationBehaviour, IPlayerJoined
         _killCounter = GameObject.FindObjectOfType<KillCounter>();
         _killCounter.KillDictionary.Set(player, 0);
 
-        /*
-        Debug.LogError("Player name " + player);
-        
-        foreach(var item in _killCounter.KillDictionary)
-        {
-            Debug.LogError("Player: " + item.Key);
-        }
-        */
         if (player == Runner.LocalPlayer)
         {
             Runner.Spawn(PlayerPrefab, _spawnPoint, Quaternion.identity, player);

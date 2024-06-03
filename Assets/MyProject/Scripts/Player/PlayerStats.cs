@@ -15,21 +15,7 @@ public class PlayerStats : NetworkBehaviour
         _basicSpawner.PlayerDictionary.Add(Object.InputAuthority, this);
     }
 
-    public override void FixedUpdateNetwork()
-    {
-        ZeroHP();
-    }
-
-    private void ZeroHP()
-    {
-        if(HP == 0)
-        {
-            ReturnToSpawnPoint();
-            HP = 100;
-        }
-    }
-
-    private void ReturnToSpawnPoint()
+    public void ReturnToSpawnPoint()
     {
         transform.position = _spawnPoint;
     }
